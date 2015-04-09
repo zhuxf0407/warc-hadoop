@@ -28,15 +28,11 @@ public class HelloWarc  extends Configured implements Tool{
 		Configuration conf = new Configuration();
 		Job job = Job.getInstance(conf, "HelloWarc using built in mappers and reducers");
 		job.setJarByClass(getClass());
-		
-		
+				
 		WARCFileReader warc = new WARCFileReader(job,new Path(args[0]));
-		
-		WARCRecord record = warc.read();
-		
+		WARCRecord record = warc.read();		
 		warc.close();
-		 
-		
+				
 		return job.waitForCompletion(true)? 0 : 1;
 	}
 
